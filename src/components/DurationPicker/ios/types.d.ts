@@ -1,6 +1,3 @@
-import { Component } from 'react';
-import { ViewPropTypes } from 'react-native';
-
 export interface IProps {
   maxHour?: number;
   maxMinute?: number;

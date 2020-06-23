@@ -99,7 +99,7 @@ class TimePicker extends Component<IProps, IState> {
           selectedValue={selectedHour}
           style={styles.picker}
           itemStyle={itemStyle}
-          onValueChange={(itemValue) => this.onValueChange(itemValue.toString(), selectedMinute)}
+          onValueChange={(itemValue) => this.onValueChange(itemValue, selectedMinute)}
         >
           {this.getHourItems()}
         </Picker>
@@ -108,7 +108,7 @@ class TimePicker extends Component<IProps, IState> {
           selectedValue={selectedMinute}
           style={styles.picker}
           itemStyle={itemStyle}
-          onValueChange={(itemValue) => this.onValueChange(selectedHour, itemValue.toString())}
+          onValueChange={(itemValue) => this.onValueChange(selectedHour, itemValue)}
         >
           {this.getMinuteItems()}
         </Picker>
