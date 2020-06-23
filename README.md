@@ -2,7 +2,7 @@
 
 # react-native-common-ux-kit
 
-dur
+Duration picker
 
 ## Installation
 
@@ -40,17 +40,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
-
-```
-
-// ...
-
-const result = await UxKit.multiply(3, 7);
-```
-
-## Contributing
-
-See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the repository and the development workflow.
 
 ## License
 
