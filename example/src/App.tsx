@@ -1,17 +1,20 @@
-import * as React from 'react';
-import { StyleSheet, View, Text } from 'react-native';
-import UxKit from 'react-native-ux-kit';
+import React, { useState } from 'react';
+import { StyleSheet, View, Button } from 'react-native';
+import { T, DurationPicker } from 'react-native-ux-kit';
 
 export default function App() {
-  const [result, setResult] = React.useState<number | undefined>();
-
-  React.useEffect(() => {
-    UxKit.multiply(3, 7).then(setResult);
-  }, []);
-
+  const [isVisible, setIsVisible] = useState(false);
+  const [duration, setDuration] = useState({ hour: '0', minute: '0'});
   return (
     <View style={styles.container}>
-      <Text>Result: {result}</Text>
+      <T />
+      <Button onPress={() => setIsVisible(true)} title={`${duration.hour}:${duration.minute}`} />
+      <DurationPicker 
+        isVisible={isVisible} 
+        setIsVisible={setIsVisible} 
+        title={'setTime'} 
+        onConfirm={setDuration}
+      />
     </View>
   );
 }
