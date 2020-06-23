@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, Button } from 'react-native';
-import { T, DurationPicker } from 'react-native-ux-kit';
+import { DurationPicker } from 'react-native-ux-kit';
 
 export default function App() {
   const [isVisible, setIsVisible] = useState(false);
   const [duration, setDuration] = useState({ hour: '0', minute: '0'});
   return (
     <View style={styles.container}>
-      <T />
       <Button onPress={() => setIsVisible(!isVisible)} title={`${duration.hour}:${duration.minute}`} />
       <DurationPicker 
         isVisible={isVisible} 
