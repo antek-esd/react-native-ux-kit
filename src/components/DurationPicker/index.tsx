@@ -8,9 +8,14 @@ import { IDurationPicker, IConfig, IAndroidPickerResult } from './types.d';
 
 const ios = Platform.OS === 'ios';
 
-export const DurationPicker: FC<IDurationPicker> = (props): ReactElement => {
-  const { title, color, isVisible, onConfirm, setIsVisible, cancelText } = props;
-
+export const DurationPicker: FC<IDurationPicker> = ({
+  cancelText,
+  color,
+  isVisible,
+  onConfirm,
+  setIsVisible,
+  title,
+}): ReactElement => {
   const TimePickerIOS = useRef<IOSTimePickerInterface>(null);
 
   useEffect(() => {
