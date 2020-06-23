@@ -1,8 +1,7 @@
 import React, { FC, ReactElement, useEffect, useRef } from 'react';
 import { View, Platform } from 'react-native';
-import IOSTimePicker from 'react-native-24h-timepicker';
-import IOSTimePickerInterface from 'react-native-24h-timepicker/index.d';
-import AndroidTimePicker from './AndroidDurationPicker';
+import IOSTimePicker from './ios';
+import AndroidTimePicker from './android';
 import { IDurationPicker, IConfig, IAndroidPickerResult, Time } from './types.d';
 
 const ios = Platform.OS === 'ios';
@@ -27,7 +26,7 @@ export const DurationPicker: FC<IDurationPicker> = (props): ReactElement => {
     title,
   } = props;
 
-  const TimePickerIOS = useRef<IOSTimePickerInterface>(null);
+  const TimePickerIOS = useRef<IOSTimePicker>(null);
 
   const { hour, minute }: Time = selectedTime;
 
@@ -52,7 +51,8 @@ export const DurationPicker: FC<IDurationPicker> = (props): ReactElement => {
             const result: IAndroidPickerResult = await AndroidTimePicker.open(config);
             const { action, hour: h, minute: m } = result;
             if (action === 'setAction') {
-              onConfirm({ hour: h, minute: m });
+              const min = parseInt(m, 10) > 9 ? m : `0${m}`;
+              onConfirm({ hour: h, minute: min });
             }
           } catch (e) {
             console.warn(e);
@@ -81,13 +81,15 @@ export const DurationPicker: FC<IDurationPicker> = (props): ReactElement => {
         itemStyle={{ color }}
         maxHour={maxHour}
         maxMinute={maxMinute}
+        hourInterval={hourInterval}
+        minuteInterval={minuteInterval}
         minuteUnit={minuteUnit}
         onCancel={handleOnCancel}
         onConfirm={handleOnConfirm}
         ref={TimePickerIOS}
         selectedHour={hour}
         selectedMinute={minute}
-        textCancel={cancelText}
+        textCancel={cancelText?.toUpperCase()}
         textConfirm="OK"
       />
     );
@@ -101,8 +103,9 @@ DurationPicker.defaultProps = {
   hourInterval: 1,
   hourUnit: '',
   maxHour: 23,
-  maxMinute: 60,
+  maxMinute: 59,
   minuteInterval: 1,
   minuteUnit: '',
   selectedTime: { hour: '0', minute: '0' },
+  color: 'black',
 };

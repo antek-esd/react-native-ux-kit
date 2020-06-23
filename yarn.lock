@@ -1707,6 +1707,11 @@
   resolved "https://registry.yarnpkg.com/@react-native-community/eslint-plugin/-/eslint-plugin-1.1.0.tgz#e42b1bef12d2415411519fd528e64b593b1363dc"
   integrity sha512-W/J0fNYVO01tioHjvYWQ9m6RgndVtbElzYozBq1ZPrHO/iCzlqoySHl4gO/fpCl9QEFjvJfjPgtPMTMlsoq5DQ==
 
+"@react-native-community/picker@^1.6.5":
+  version "1.6.5"
+  resolved "https://registry.yarnpkg.com/@react-native-community/picker/-/picker-1.6.5.tgz#9489fdb6d0b4b5877491101e0c3185ea9511d1aa"
+  integrity sha512-mwt0sBaFdURJWkq6wFf2BrYh7fzB1CKK4/gx20zmDYDmahvk3CVUQVlkINDDyXE9m0lYZ9V8rBZBBAJy9W3GkQ==
+
 "@release-it/conventional-changelog@^1.1.4":
   version "1.1.4"
   resolved "https://registry.yarnpkg.com/@release-it/conventional-changelog/-/conventional-changelog-1.1.4.tgz#28ad5a49e096fec7d874f06041b5cc0ddffa7daa"
@@ -8045,19 +8050,10 @@ react-is@^16.12.0, react-is@^16.8.1, react-is@^16.8.4:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
 
-react-native-24h-timepicker@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/react-native-24h-timepicker/-/react-native-24h-timepicker-1.1.0.tgz#b95a86339c0bd7261216956d16c3f41b7bbfb8dd"
-  integrity sha512-rnOHWmKcSbbdpYBVl2MxkQY7IU83f/5K6NB8iq4nmWdq8WfHklnkfvfpjnga8uY6sqLDAK11j+dQHo0XVK+QIg==
-  dependencies:
-    react-native-raw-bottom-sheet "^1.0.0"
-
-react-native-raw-bottom-sheet@^1.0.0:
-  version "1.1.4"
-  resolved "https://registry.yarnpkg.com/react-native-raw-bottom-sheet/-/react-native-raw-bottom-sheet-1.1.4.tgz#1f79bd1bf5b74fec3c9a97b108a5a527d5157318"
-  integrity sha512-rn9KZuxWLE/EwxuoVzVBrzuTTcUZyhUfOOmAXScuGc90W6sf2NgM38vx6+SkZ0pqWgXmAKnUALmjE3kdNnxAFQ==
-  dependencies:
-    prop-types "^15.6.2"
+react-native-raw-bottom-sheet@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/react-native-raw-bottom-sheet/-/react-native-raw-bottom-sheet-2.2.0.tgz#d11dabb86aadb014273767ef7b554924b13633c5"
+  integrity sha512-qL4JKIqvbcVxbkKzeh51hjV7suoJN3ouxzvLmOg0FBUV1yiJAfEbacjQdtRCI6+OU5pyGFBIifLsTXcFDwHggg==
 
 react-native-vector-icons@^6.6.0:
   version "6.6.0"
