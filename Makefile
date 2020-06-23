@@ -3,3 +3,6 @@ start:
 
 start-android:
 	yarn bootstrap && yarn example android
+
+publish:
+	npm publish
