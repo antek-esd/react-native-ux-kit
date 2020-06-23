@@ -1,12 +1,14 @@
 import { NativeModules } from 'react-native';
 
 type DurationPickerProps = {
-  hour: number;
-  minute: number;
-  minuteInterval: number;
-  hourInterval: number;
-  title: string;
-  color: string;
+  hour?: number;
+  minute?: number;
+  minuteInterval?: number;
+  hourInterval?: number;
+  title?: string;
+  color?: string;
+  maxHour?: number;
+  maxMinute?: number;
 };
 
 type IAndroidPickerResult = {

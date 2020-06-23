@@ -26,10 +26,12 @@ export const DurationPicker: FC<IDurationPicker> = ({
           const config: IConfig = {
             hour: 1,
             minute: 0,
-            minuteInterval: 10,
-            hourInterval: 3,
+            minuteInterval: 1,
+            hourInterval: 1,
             title,
-            color: color ?? 'green',
+            color,
+            maxHour: 20,
+            maxMinute: 40,
           };
           try {
             const result: IAndroidPickerResult = await AndroidTimePicker.open(config);

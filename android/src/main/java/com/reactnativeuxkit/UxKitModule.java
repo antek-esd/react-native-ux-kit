@@ -26,6 +26,8 @@ public class UxKitModule extends ReactContextBaseJavaModule {
     private static final String ARG_COLOR = "color";
     private static final String ACTION_SET = "setAction";
     private static final String ACTION_CANCEL = "cancelAction";
+    private static final String ARG_MAX_HOUR = "maxHour";
+    private static final String ARG_MAX_MINUTE = "maxMinute";
 
     UxKitModule(ReactApplicationContext reactContext) {
         super(reactContext);
@@ -82,6 +84,8 @@ public class UxKitModule extends ReactContextBaseJavaModule {
         int minute = 0;
         int minuteInterval = 1;
         int hourInterval = 1;
+        int maxHour = 23;
+        int maxMinute = 60;
         String title = null;
         String color = "#009688";
 
@@ -98,6 +102,10 @@ public class UxKitModule extends ReactContextBaseJavaModule {
                 title = options.getString(ARG_TITLE);
             if (options.hasKey(ARG_COLOR) && !options.isNull(ARG_COLOR))
                 color = options.getString(ARG_COLOR);
+            if (options.hasKey(ARG_MAX_HOUR) && !options.isNull(ARG_MAX_HOUR))
+                maxHour = options.getInt(ARG_MAX_HOUR);
+            if (options.hasKey(ARG_MAX_MINUTE) && !options.isNull(ARG_MAX_MINUTE))
+                maxMinute = options.getInt(ARG_MAX_MINUTE);
         }
 
         TimePickerDialogListener listener = new TimePickerDialogListener(promise);
@@ -108,5 +116,6 @@ public class UxKitModule extends ReactContextBaseJavaModule {
         tpd.setMinTime(0, minuteInterval, 0);
         tpd.setTimeInterval(hourInterval, minuteInterval, 60);
         tpd.show(activity.getFragmentManager(), FRAGMENT_TAG);
+        tpd.setMaxTime(maxHour, maxMinute, 0);
     }
 }
