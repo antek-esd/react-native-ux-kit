@@ -23,7 +23,7 @@ export const DurationPicker: FC<IDurationPicker> = ({
       if (ios && TimePickerIOS?.current?.open) TimePickerIOS.current.open();
 
       if (!ios) {
-        console.log(AndroidTimePicker);
+        // console.log(AndroidTimePicker);
         const openDurationPickerAndroid = async (): Promise<void> => {
           const config: IConfig = {
             hour: 1,
