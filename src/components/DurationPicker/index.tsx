@@ -108,4 +108,5 @@ DurationPicker.defaultProps = {
   minuteUnit: '',
   selectedTime: { hour: '0', minute: '0' },
   color: 'black',
+  title: 'Set time',
 };

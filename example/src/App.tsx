@@ -12,7 +12,6 @@ export default function App() {
       <DurationPicker 
         isVisible={isVisible} 
         setIsVisible={setIsVisible} 
-        title={'setTime'} 
         onConfirm={setDuration}
         selectedTime={duration}
       />
