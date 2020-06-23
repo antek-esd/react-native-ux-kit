@@ -24,6 +24,5 @@
     "strict": true,
     "target": "esnext",
     "isolatedModules": false,
-    // "noEmit": true,
   }
 }

@@ -3,19 +3,33 @@ import { View, Platform } from 'react-native';
 import IOSTimePicker from 'react-native-24h-timepicker';
 import IOSTimePickerInterface from 'react-native-24h-timepicker/index.d';
 import AndroidTimePicker from './AndroidDurationPicker';
-import { IDurationPicker, IConfig, IAndroidPickerResult } from './types.d';
+import { IDurationPicker, IConfig, IAndroidPickerResult, Time } from './types.d';
 
 const ios = Platform.OS === 'ios';
 
-export const DurationPicker: FC<IDurationPicker> = ({
-  cancelText,
-  color,
-  isVisible,
-  onConfirm,
-  setIsVisible,
-  title,
-}): ReactElement => {
+export const DurationPicker: FC<IDurationPicker> = (props): ReactElement => {
+  const {
+    cancelText,
+    color,
+    isVisible,
+    maxHour,
+    maxMinute,
+    onConfirm,
+    selectedTime,
+    setIsVisible,
+    // ios
+    hourUnit,
+    minuteUnit,
+    // android
+    darkTheme,
+    hourInterval,
+    minuteInterval,
+    title,
+  } = props;
+
   const TimePickerIOS = useRef<IOSTimePickerInterface>(null);
+
+  const { hour, minute }: Time = selectedTime;
 
   useEffect(() => {
     if (isVisible) {
@@ -24,20 +38,21 @@ export const DurationPicker: FC<IDurationPicker> = ({
       if (!ios) {
         const openDurationPickerAndroid = async (): Promise<void> => {
           const config: IConfig = {
-            hour: 1,
-            minute: 0,
-            minuteInterval: 1,
-            hourInterval: 1,
-            title,
             color,
-            maxHour: 20,
-            maxMinute: 40,
+            darkTheme,
+            hour: parseInt(hour, 10),
+            hourInterval,
+            maxHour,
+            maxMinute,
+            minute: parseInt(minute, 10),
+            minuteInterval,
+            title,
           };
           try {
             const result: IAndroidPickerResult = await AndroidTimePicker.open(config);
-            const { action, hour, minute } = result;
+            const { action, hour: h, minute: m } = result;
             if (action === 'setAction') {
-              onConfirm({ hour, minute });
+              onConfirm({ hour: h, minute: m });
             }
           } catch (e) {
             console.warn(e);
@@ -48,37 +63,46 @@ export const DurationPicker: FC<IDurationPicker> = ({
         setTimeout(() => setIsVisible(false));
       }
     }
-  }, [isVisible, color, title, setIsVisible, onConfirm]);
+  }, [isVisible]);
 
   if (ios) {
+    const handleOnCancel = () => {
+      if (TimePickerIOS?.current?.close) TimePickerIOS.current.close();
+      setIsVisible(false);
+    };
+    const handleOnConfirm = (h: string, m: string): void => {
+      onConfirm({ hour: h, minute: m });
+      if (TimePickerIOS?.current?.close) TimePickerIOS.current.close();
+      setIsVisible(false);
+    };
     return (
       <IOSTimePicker
-        hourUnit=" h"
-        minuteUnit=" m"
-        // maxHour={startHour ? 23 - startHour : 23}
-        // maxMinute={59}
-        onCancel={() => {
-          if (TimePickerIOS?.current?.close) TimePickerIOS.current.close();
-          setIsVisible(false);
-        }}
-        onConfirm={(hour: string, minute: string): void => {
-          onConfirm({ hour, minute });
-          if (TimePickerIOS?.current?.close) TimePickerIOS.current.close();
-          setIsVisible(false);
-        }}
+        hourUnit={hourUnit}
+        itemStyle={{ color }}
+        maxHour={maxHour}
+        maxMinute={maxMinute}
+        minuteUnit={minuteUnit}
+        onCancel={handleOnCancel}
+        onConfirm={handleOnConfirm}
         ref={TimePickerIOS}
-        selectedHour="0"
-        selectedMinute="0"
+        selectedHour={hour}
+        selectedMinute={minute}
         textCancel={cancelText}
         textConfirm="OK"
-        itemStyle={{ color }}
       />
     );
   }
-
   return <View />;
 };
 
 DurationPicker.defaultProps = {
   cancelText: 'cancel',
+  darkTheme: false,
+  hourInterval: 1,
+  hourUnit: '',
+  maxHour: 23,
+  maxMinute: 60,
+  minuteInterval: 1,
+  minuteUnit: '',
+  selectedTime: { hour: '0', minute: '0' },
 };

@@ -15,6 +15,7 @@ export default function App() {
         setIsVisible={setIsVisible} 
         title={'setTime'} 
         onConfirm={setDuration}
+        selectedTime={duration}
       />
     </View>
   );

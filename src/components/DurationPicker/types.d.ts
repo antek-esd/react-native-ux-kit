@@ -1,18 +1,25 @@
+export interface Time {
+  hour: string;
+  minute: string;
+}
+
 export interface IDurationPicker {
-  title: string;
+  cancelText?: string;
   color?: string;
-  time?: string;
   isVisible: boolean;
   onConfirm(time: Time): void;
   setIsVisible(b: boolean): void;
-  cancelText?: string;
+  selectedTime: Time;
+  maxHour?: number;
+  maxMinute?: number;
+  // ios
   hourUnit?: string;
   minuteUnit?: string;
-}
-
-interface Time {
-  hour: string;
-  minute: string;
+  // android
+  title?: string;
+  darkTheme?: boolean;
+  hourInterval?: number;
+  minuteInterval?: number;
 }
 
 export interface IAndroidPickerResult {
@@ -22,12 +29,13 @@ export interface IAndroidPickerResult {
 }
 
 export interface IConfig {
-  hour: number;
-  minute: number;
+  hour?: number;
+  minute?: number;
   minuteInterval?: number;
   hourInterval?: number;
-  title: string;
+  title?: string;
   color?: string;
   maxHour?: number;
   maxMinute?: number;
+  darkTheme?: boolean;
 }

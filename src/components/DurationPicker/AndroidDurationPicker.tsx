@@ -9,6 +9,7 @@ type DurationPickerProps = {
   color?: string;
   maxHour?: number;
   maxMinute?: number;
+  darkTheme?: boolean;
 };
 
 type IAndroidPickerResult = {
