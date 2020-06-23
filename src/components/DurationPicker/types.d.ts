@@ -24,7 +24,8 @@ export interface IAndroidPickerResult {
 export interface IConfig {
   hour: number;
   minute: number;
-  interval: number;
+  minuteInterval: number;
+  hourInterval: number;
   title: string;
   color: string;
 }

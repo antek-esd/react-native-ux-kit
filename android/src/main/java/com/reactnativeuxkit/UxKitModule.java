@@ -20,7 +20,8 @@ public class UxKitModule extends ReactContextBaseJavaModule {
     private static final String FRAGMENT_TAG = "UxKit";
     private static final String ARG_HOUR = "hour";
     private static final String ARG_MINUTE = "minute";
-    private static final String ARG_INTERVAL = "interval";
+    private static final String ARG_MINUTE_INTERVAL = "minuteInterval";
+    private static final String ARG_HOUR_INTERVAL = "hourInterval";
     private static final String ARG_TITLE = "title";
     private static final String ARG_COLOR = "color";
     private static final String ACTION_SET = "setAction";
@@ -48,8 +49,8 @@ public class UxKitModule extends ReactContextBaseJavaModule {
             if (!mPromiseResolved && getReactApplicationContext().hasActiveCatalystInstance()) {
                 WritableMap result = new WritableNativeMap();
                 result.putString("action", ACTION_SET);
-                result.putInt("hour", hour);
-                result.putInt("minute", minute);
+                result.putInt(ARG_HOUR, hour);
+                result.putInt(ARG_MINUTE, minute);
                 mPromise.resolve(result);
                 mPromiseResolved = true;
             }
@@ -79,7 +80,8 @@ public class UxKitModule extends ReactContextBaseJavaModule {
 
         int hour = 0;
         int minute = 0;
-        int interval = 1;
+        int minuteInterval = 1;
+        int hourInterval = 1;
         String title = null;
         String color = "#009688";
 
@@ -88,8 +90,10 @@ public class UxKitModule extends ReactContextBaseJavaModule {
                 hour = options.getInt(ARG_HOUR);
             if (options.hasKey(ARG_MINUTE) && !options.isNull(ARG_MINUTE))
                 minute = options.getInt(ARG_MINUTE);
-            if (options.hasKey(ARG_INTERVAL) && !options.isNull(ARG_INTERVAL))
-                interval = options.getInt(ARG_INTERVAL);
+            if (options.hasKey(ARG_MINUTE_INTERVAL) && !options.isNull(ARG_MINUTE_INTERVAL))
+                minuteInterval = options.getInt(ARG_MINUTE_INTERVAL);
+            if (options.hasKey(ARG_HOUR_INTERVAL) && !options.isNull(ARG_HOUR_INTERVAL))
+                hourInterval = options.getInt(ARG_HOUR_INTERVAL);
             if (options.hasKey(ARG_TITLE) && !options.isNull(ARG_TITLE))
                 title = options.getString(ARG_TITLE);
             if (options.hasKey(ARG_COLOR) && !options.isNull(ARG_COLOR))
@@ -101,8 +105,8 @@ public class UxKitModule extends ReactContextBaseJavaModule {
         tpd.setAccentColor(Color.parseColor(color));
         tpd.setTitle(title);
         tpd.enableSeconds(false);
-        tpd.setMinTime(0, interval, 0);
-        tpd.setTimeInterval(1, interval, 60);
+        tpd.setMinTime(0, minuteInterval, 0);
+        tpd.setTimeInterval(hourInterval, minuteInterval, 60);
         tpd.show(activity.getFragmentManager(), FRAGMENT_TAG);
     }
 }

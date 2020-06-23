@@ -3,7 +3,8 @@ import { NativeModules } from 'react-native';
 type DurationPickerProps = {
   hour: number;
   minute: number;
-  interval: number;
+  minuteInterval: number;
+  hourInterval: number;
   title: string;
   color: string;
 };

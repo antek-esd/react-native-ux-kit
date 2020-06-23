@@ -126,5 +126,5 @@ def kotlin_version = getExtOrDefault('kotlinVersion')
 dependencies {
   // noinspection GradleDynamicVersion
   api 'com.facebook.react:react-native:+'
-  compile 'com.wdullaer:materialdatetimepicker:3.6.3'
+  implementation 'com.wdullaer:materialdatetimepicker:3.6.4'
 }

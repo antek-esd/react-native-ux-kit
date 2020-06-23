@@ -3,7 +3,6 @@ import { View, Platform } from 'react-native';
 import IOSTimePicker from 'react-native-24h-timepicker';
 import IOSTimePickerInterface from 'react-native-24h-timepicker/index.d';
 import AndroidTimePicker from './AndroidDurationPicker';
-// import AndroidTimePickerInterface from 'react-native-duration-picker/index.d';
 import { IDurationPicker, IConfig, IAndroidPickerResult } from './types.d';
 
 const ios = Platform.OS === 'ios';
@@ -23,22 +22,20 @@ export const DurationPicker: FC<IDurationPicker> = ({
       if (ios && TimePickerIOS?.current?.open) TimePickerIOS.current.open();
 
       if (!ios) {
-        // console.log(AndroidTimePicker);
         const openDurationPickerAndroid = async (): Promise<void> => {
           const config: IConfig = {
             hour: 1,
             minute: 0,
-            interval: 1,
+            minuteInterval: 10,
+            hourInterval: 3,
             title,
             color: color ?? 'green',
           };
           try {
             const result: IAndroidPickerResult = await AndroidTimePicker.open(config);
             const { action, hour, minute } = result;
-
             if (action === 'setAction') {
               onConfirm({ hour, minute });
-              setIsVisible(false);
             }
           } catch (e) {
             console.warn(e);
@@ -46,6 +43,7 @@ export const DurationPicker: FC<IDurationPicker> = ({
           }
         };
         openDurationPickerAndroid().catch(console.warn);
+        setTimeout(() => setIsVisible(false));
       }
     }
   }, [isVisible, color, title, setIsVisible, onConfirm]);
