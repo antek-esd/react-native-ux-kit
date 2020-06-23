@@ -1,6 +1,6 @@
 {
-  "name": "react-native-ux-kit-example",
-  "description": "Example app for react-native-ux-kit",
+  "name": "react-native-common-ux-kit-example",
+  "description": "Example app for react-native-common-ux-kit",
   "version": "0.0.1",
   "private": true,
   "scripts": {

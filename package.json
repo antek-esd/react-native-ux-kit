@@ -1,5 +1,5 @@
 {
-  "name": "react-native-ux-kit",
+  "name": "react-native-common-ux-kit",
   "version": "0.1.0",
   "description": "dur",
   "main": "lib/commonjs/index",
@@ -13,7 +13,7 @@
     "android",
     "ios",
     "cpp",
-    "react-native-ux-kit.podspec",
+    "react-native-common-ux-kit.podspec",
     "!lib/typescript/example",
     "!**/__tests__",
     "!**/__fixtures__",
@@ -35,13 +35,13 @@
     "ios",
     "android"
   ],
-  "repository": "https://github.com/antek-esd/react-native-ux-kit/react-native-ux-kit",
-  "author": "Antek-ESD, Alexey Sergienko, Pavel Botezat <antek-esd@antek-aad.com> (https://github.com/antek-esd/react-native-ux-kit)",
+  "repository": "https://github.com/antek-esd/react-native-common-ux-kit/react-native-common-ux-kit",
+  "author": "Antek-ESD, Alexey Sergienko, Pavel Botezat <antek-esd@antek-aad.com> (https://github.com/antek-esd/react-native-common-ux-kit)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/antek-esd/react-native-ux-kit/react-native-ux-kit/issues"
+    "url": "https://github.com/antek-esd/react-native-common-ux-kit/react-native-common-ux-kit/issues"
   },
-  "homepage": "https://github.com/antek-esd/react-native-ux-kit/react-native-ux-kit#readme",
+  "homepage": "https://github.com/antek-esd/react-native-common-ux-kit/react-native-common-ux-kit#readme",
   "devDependencies": {
     "@commitlint/config-conventional": "^8.3.4",
     "@react-native-community/bob": "^0.15.2",

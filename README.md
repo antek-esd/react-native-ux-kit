@@ -1,11 +1,13 @@
-# react-native-ux-kit
+[![npm version](https://badge.fury.io/js/react-native-common-ux-kit.svg)](https://badge.fury.io/js/react-native-common-ux-kit)
+
+# react-native-common-ux-kit
 
 dur
 
 ## Installation
 
 ```sh
-npm install react-native-ux-kit
+npm install react-native-common-ux-kit
 ```
 
 ## Usage
@@ -13,7 +15,7 @@ npm install react-native-ux-kit
 ```js
 import React, { useState } from 'react';
 import { StyleSheet, View, Button } from 'react-native';
-import { DurationPicker } from 'react-native-ux-kit';
+import { DurationPicker } from 'react-native-common-ux-kit';
 
 export default function App() {
   const [isVisible, setIsVisible] = useState(false);
@@ -30,6 +32,15 @@ export default function App() {
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});
+
 ```
 
 // ...

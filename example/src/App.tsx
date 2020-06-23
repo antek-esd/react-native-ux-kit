@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, Button } from 'react-native';
-import { DurationPicker } from 'react-native-ux-kit';
+import { DurationPicker } from 'react-native-common-ux-kit';
 
 export default function App() {
   const [isVisible, setIsVisible] = useState(false);
