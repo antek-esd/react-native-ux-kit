@@ -28,7 +28,6 @@
     "example": "yarn --cwd example",
     "pods": "cd example && pod-install --quiet",
     "bootstrap": "yarn example && yarn && yarn pods",
-    "postinstall": "patch-package",
     "storybook": "start-storybook -p 7007"
   },
   "keywords": [
@@ -70,7 +69,6 @@
     "eslint-plugin-prettier": "^3.1.3",
     "husky": "^4.2.5",
     "jest": "^26.0.1",
-    "patch-package": "^6.2.2",
     "pod-install": "^0.1.0",
     "prettier": "^2.0.5",
     "react": "16.11.0",
