@@ -1,7 +1,7 @@
 import React, { Component, ReactElement } from 'react';
-import { View, TouchableOpacity, Text, Picker } from 'react-native';
+import { View, TouchableOpacity, Text } from 'react-native';
 import RBSheet from 'react-native-raw-bottom-sheet';
-// import { Picker } from '@react-native-community/picker';
+import { Picker } from '@react-native-community/picker';
 import { styles } from './styles';
 import { IProps, IState } from './types.d';
 
@@ -99,7 +99,7 @@ class TimePicker extends Component<IProps, IState> {
           selectedValue={selectedHour}
           style={styles.picker}
           itemStyle={itemStyle}
-          onValueChange={(itemValue) => this.onValueChange(itemValue, selectedMinute)}
+          onValueChange={(itemValue) => this.onValueChange(itemValue as string, selectedMinute)}
         >
           {this.getHourItems()}
         </Picker>
@@ -108,7 +108,7 @@ class TimePicker extends Component<IProps, IState> {
           selectedValue={selectedMinute}
           style={styles.picker}
           itemStyle={itemStyle}
-          onValueChange={(itemValue) => this.onValueChange(selectedHour, itemValue)}
+          onValueChange={(itemValue) => this.onValueChange(selectedHour, itemValue as string)}
         >
           {this.getMinuteItems()}
         </Picker>
