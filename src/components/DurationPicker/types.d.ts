@@ -12,14 +12,14 @@ export interface IDurationPicker {
   selectedTime: Time;
   maxHour?: number;
   maxMinute?: number;
+  hourInterval?: number;
+  minuteInterval?: number;
   // ios
   hourUnit?: string;
   minuteUnit?: string;
   // android
   title?: string;
   darkTheme?: boolean;
-  hourInterval?: number;
-  minuteInterval?: number;
 }
 
 export interface IAndroidPickerResult {

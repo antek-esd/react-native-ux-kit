@@ -13,6 +13,7 @@ export default function App() {
         setIsVisible={setIsVisible} 
         onConfirm={setDuration}
         selectedTime={duration}
+        color={'#1e1d6c'}
       />
       <OfflineNotification position="bottom" disableScreen/>
     </SafeAreaView>
