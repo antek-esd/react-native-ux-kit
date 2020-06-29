@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, Button } from 'react-native';
-import { DurationPicker } from 'react-native-common-ux-kit';
+import { StyleSheet, Button, SafeAreaView } from 'react-native';
+import { DurationPicker, OfflineNotification } from 'react-native-common-ux-kit';
 
 export default function App() {
   const [isVisible, setIsVisible] = useState(false);
   const [duration, setDuration] = useState({ hour: '0', minute: '0'});
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <Button onPress={() => setIsVisible(!isVisible)} title={`${duration.hour}:${duration.minute}`} />
       <DurationPicker 
         isVisible={isVisible} 
@@ -14,7 +14,8 @@ export default function App() {
         onConfirm={setDuration}
         selectedTime={duration}
       />
-    </View>
+      <OfflineNotification position="bottom" disableScreen/>
+    </SafeAreaView>
   );
 }
 
