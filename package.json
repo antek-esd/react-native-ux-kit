@@ -1,6 +1,6 @@
 {
   "name": "react-native-common-ux-kit",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "dur",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
@@ -129,7 +129,10 @@
       "typescript"
     ]
   },
-  "bundledDependencies": ["@react-native-community/netinfo", "@react-native-community/picker"],
+  "bundledDependencies": [
+    "@react-native-community/netinfo",
+    "@react-native-community/picker"
+  ],
   "dependencies": {
     "@react-native-community/netinfo": "^5.9.3",
     "@react-native-community/picker": "^1.6.5"
