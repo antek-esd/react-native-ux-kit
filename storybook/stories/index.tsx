@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-call */
 import React from 'react';
 // import { Text } from 'react-native';
 
@@ -8,6 +9,7 @@ import { storiesOf } from '@storybook/react-native';
 // import CenterView from './CenterView';
 import Welcome from './Welcome';
 
+// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
 storiesOf('Welcome', module).add('to Storybook', () => <Welcome />);
 
 // storiesOf('Button', module)
