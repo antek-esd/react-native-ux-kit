@@ -44,7 +44,7 @@ export interface ITextInput {
   textContentType?: TextInput['props']['textContentType'];
   customLeftButton?: {
     onPress(): void;
-    icon: string;
+    icon?: string;
   };
 }
 

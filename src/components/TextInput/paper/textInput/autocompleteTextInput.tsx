@@ -16,7 +16,7 @@
 //   textInputProps,
 //   updateState,
 // }): ReactElement => {
-//   let autocomplete = useRef<typeof Autocomplete>(null);
+//   let autocomplete = useRef<Autocomplete<string | AutocompleteItemType> | null>(null);
 //   const isPicker = mode === 'search picker' || mode === 'picker';
 //   const [text, setText] = useState(textInputProps.value);
 //   const [isShowResult, setIsShowResult] = useState(false);
@@ -53,9 +53,10 @@
 
 //   const onStartShouldSetResponderCapture = () => {
 //     if (updateState) updateState({ [isEnableScroll]: false });
-//     if (autocomplete.resultList.props.scrollEventThrottle === 0 && !isEnableScroll) {
+//     if (autocomplete?.resultList.props.scrollEventThrottle === 0 && !isEnableScroll) {
 //       if (updateState) updateState({ [isEnableScroll]: true });
 //     }
+//     return true;
 //   };
 
 //   const onChangeText = (val: string) => {
@@ -76,27 +77,31 @@
 //         value={mode === 'search picker' ? text : textInputProps.value}
 //         editable={mode !== 'picker'}
 //         customLeftButton={{
-//           icon: isPicker ? 'angle-down' : null,
+//           icon: isPicker ? 'angle-down' : undefined,
 //           onPress: () => {
 //             if (isShowResult) return onBlur();
 //             if (mode === 'search picker') setText('');
 //             if (mode === 'picker') setTimeout(Keyboard.dismiss);
-//             setIsShowResult(!isShowResult);
+//             return setIsShowResult(!isShowResult);
 //           },
 //         }}
 //       />
 //     );
 //   };
 
-//   const renderAutocompleteItem = (itemData) => {
-//     const value = typeof itemData === 'object' ? itemData.item.value : itemData.item;
+//   const renderAutocompleteItem = (itemData: {
+//     index: number;
+//     item: AutocompleteItemType | string;
+//   }) => {
+//     const value = typeof itemData.item === 'object' ? itemData.item.value : itemData.item;
+//     const id = typeof itemData.item === 'object' ? itemData.item.id : value;
 //     return (
 //       <AutocompleteItem
 //         value={value}
 //         isPicker={isPicker}
 //         onPress={() => {
-//           textInputProps.onChangeText(isPicker ? itemData.item.id : value);
-//           setText(isPicker ? itemData.item.value : value);
+//           textInputProps.onChangeText(id.toString());
+//           setText(value);
 //           setIsShowResult(false);
 //           Keyboard.dismiss();
 //           onBlur();
@@ -113,7 +118,7 @@
 //       hideResults={!isShowResult}
 //       inputContainerStyle={styles.inputContainerStyle}
 //       keyExtractor={(item, i) => String(i)}
-//       listContainerStyle={[styles.listContainerStyle(textInputProps.icon), styleAutocomplete]}
+//       listContainerStyle={[styles.listContainerStyle(!!textInputProps.icon), styleAutocomplete]}
 //       listStyle={styles.listStyle}
 //       onStartShouldSetResponderCapture={onStartShouldSetResponderCapture}
 //       ref={(ref) => (autocomplete = ref)}
