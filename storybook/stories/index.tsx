@@ -1,14 +1,14 @@
-// import React from 'react';
+import React from 'react';
 // import { Text } from 'react-native';
 
-// import { storiesOf } from '@storybook/react-native';
+import { storiesOf } from '@storybook/react-native';
 // import { action } from '@storybook/addon-actions';
 
 // import Button from './Button/index.android';
 // import CenterView from './CenterView';
-// import Welcome from './Welcome';
+import Welcome from './Welcome';
 
-// storiesOf('Welcome', module).add('to Storybook', () => <Welcome />);
+storiesOf('Welcome', module).add('to Storybook', () => <Welcome />);
 
 // storiesOf('Button', module)
 //   .addDecorator((getStory) => <CenterView>{getStory()}</CenterView>)

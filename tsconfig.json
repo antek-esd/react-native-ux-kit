@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
+    "rootDirs": ["src", "stories"],
     "paths": {
       "react-native-common-ux-kit": ["./src/index"]
     },

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { StyleSheet, Button, View } from 'react-native';
-import { DurationPicker, OfflineNotification, TextInput } from 'react-native-common-ux-kit';
+import  { DurationPicker, OfflineNotification, TextInput } from 'react-native-common-ux-kit';
 
-export default function App() {
+function App() {
   const [isVisible, setIsVisible] = useState(false);
   const [text, setText] = useState('');
   const [duration, setDuration] = useState({ hour: '0', minute: '0'});
@@ -18,13 +18,19 @@ export default function App() {
       />
       <OfflineNotification position="bottom" disableScreen/>
       <TextInput onChangeText={setText} value={text} icon="pen" placeholder="placeholder" multiline/>
-      <TextInput onChangeText={setText} value={text} icon="book" placeholder="placeholder" underline={false}/>
-      <TextInput label="input" placeholder="inputp" onChangeText={setText} value={text} underline={false}/>
-      <TextInput label="input" placeholder="inputp" onChangeText={setText} value={text} icon="google" multiline/>
+      <TextInput label="input" onChangeText={setText} value={text} icon="book" placeholder="placeholder" underline={false}/>
+      <TextInput label="input" placeholder="TextInput" onChangeText={setText} value={text} underline={false}/>
+      <TextInput label="input" placeholder="TextInput" onChangeText={setText} value={text} icon="google" multiline/>
 
     </View>
   );
 }
+
+const STORYBOOK_START = false;
+
+export default STORYBOOK_START
+? require('../../storybook').default
+: App;
 
 const styles = StyleSheet.create({
   container: {
