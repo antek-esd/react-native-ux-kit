@@ -17,9 +17,9 @@ export default function App() {
         color={'#1e1d6c'}
       />
       <OfflineNotification position="bottom" disableScreen/>
-      <TextInput onChangeText={setText} value={text} icon="facebook" placeholder="placeholder" multiline/>
-      <TextInput onChangeText={setText} value={text} icon="facebook" placeholder="placeholder" underline={false}/>
-      <TextInput label="input" placeholder="inputp" onChangeText={setText} value={text} icon="google" underline={false}/>
+      <TextInput onChangeText={setText} value={text} icon="pen" placeholder="placeholder" multiline/>
+      <TextInput onChangeText={setText} value={text} icon="book" placeholder="placeholder" underline={false}/>
+      <TextInput label="input" placeholder="inputp" onChangeText={setText} value={text} underline={false}/>
       <TextInput label="input" placeholder="inputp" onChangeText={setText} value={text} icon="google" multiline/>
 
     </View>

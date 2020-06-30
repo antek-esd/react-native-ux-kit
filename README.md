@@ -14,7 +14,17 @@
 npm i react-native-common-ux-kit --save
 ```
 
-ios Info.plist should add
+We are using [react-native-vector-icons](https://github.com/oblador/react-native-vector-icons), so you should add following lines in your project
+
+### Android
+
+/android/app/build.gradle
+
+```apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"```
+
+### iOS
+
+ios/yourApp/Info.plist
 
 ``` xml
 <key>UIAppFonts</key>
