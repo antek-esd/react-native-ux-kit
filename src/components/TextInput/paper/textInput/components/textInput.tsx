@@ -109,7 +109,7 @@ export const TextInput: FC<ITextInput> = ({
         {renderIcon()}
         <View style={{ flex: 1 }}>
           <PaperTextInput
-            theme={{ colors: { primary: 'grey', text: 'red' } }} // TODO: text color
+            theme={{ colors: { primary: 'grey', text: 'grey' } }} // TODO: text color
             dense={multiline && !label}
             caretHidden={caretHidden}
             editable={editable}
@@ -125,7 +125,7 @@ export const TextInput: FC<ITextInput> = ({
             onChangeText={onChangeText}
             onFocus={onFocus}
             onSubmitEditing={onSubmitEditing}
-            placeholder={placeholder || label}
+            placeholder={!label || !isFocused ? placeholder || label : undefined}
             ref={myInput}
             render={render}
             secureTextEntry={secureTextEntry}
