@@ -10,7 +10,7 @@ import { storiesOf } from '@storybook/react-native';
 import Welcome from './Welcome';
 
 // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-storiesOf('Welcome', module).add('to Storybook', () => <Welcome />);
+storiesOf('Components', module).add('Duration Picker', () => <Welcome />);
 
 // storiesOf('Button', module)
 //   .addDecorator((getStory) => <CenterView>{getStory()}</CenterView>)
