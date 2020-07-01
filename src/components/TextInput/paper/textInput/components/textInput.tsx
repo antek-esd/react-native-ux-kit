@@ -110,7 +110,7 @@ export const TextInput: FC<ITextInput> = ({
         <View style={{ flex: 1 }}>
           <PaperTextInput
             theme={{ colors: { primary: 'grey', text: 'grey' } }} // TODO: text color
-            // dense={multiline && !label}
+            dense={multiline && !label}
             caretHidden={caretHidden}
             editable={editable}
             error={showError}

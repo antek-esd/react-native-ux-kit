@@ -3,10 +3,11 @@ import { View, Platform } from 'react-native';
 import IOSTimePicker from './ios';
 import AndroidTimePicker from './android';
 import { IDurationPicker, IConfig, IAndroidPickerResult, Time } from './types.d';
+import { withTheme } from '../../core/theming';
 
 const ios = Platform.OS === 'ios';
 
-export const DurationPicker: FC<IDurationPicker> = (props): ReactElement => {
+const DurPicker: FC<IDurationPicker> = (props): ReactElement => {
   const {
     cancelText,
     color,
@@ -24,6 +25,7 @@ export const DurationPicker: FC<IDurationPicker> = (props): ReactElement => {
     hourInterval,
     minuteInterval,
     title,
+    theme,
   } = props;
 
   const TimePickerIOS = useRef<IOSTimePicker>(null);
@@ -37,7 +39,7 @@ export const DurationPicker: FC<IDurationPicker> = (props): ReactElement => {
       if (!ios) {
         const openDurationPickerAndroid = async (): Promise<void> => {
           const config: IConfig = {
-            color,
+            color: color ?? theme.colors.primary,
             darkTheme,
             hour: parseInt(hour, 10),
             hourInterval,
@@ -75,10 +77,11 @@ export const DurationPicker: FC<IDurationPicker> = (props): ReactElement => {
       if (TimePickerIOS?.current?.close) TimePickerIOS.current.close();
       setIsVisible(false);
     };
+    console.log(theme);
     return (
       <IOSTimePicker
         hourUnit={hourUnit}
-        itemStyle={{ color }}
+        itemStyle={{ color: color ?? theme.colors.primary }}
         maxHour={maxHour}
         maxMinute={maxMinute}
         hourInterval={hourInterval}
@@ -91,13 +94,14 @@ export const DurationPicker: FC<IDurationPicker> = (props): ReactElement => {
         selectedMinute={minute}
         textCancel={cancelText?.toUpperCase()}
         textConfirm="OK"
+        theme={darkTheme ? 'dark' : 'default'}
       />
     );
   }
   return <View />;
 };
 
-DurationPicker.defaultProps = {
+DurPicker.defaultProps = {
   cancelText: 'cancel',
   darkTheme: false,
   hourInterval: 1,
@@ -107,6 +111,7 @@ DurationPicker.defaultProps = {
   minuteInterval: 1,
   minuteUnit: '',
   selectedTime: { hour: '0', minute: '0' },
-  color: 'black',
   title: 'Set time',
 };
+
+export const DurationPicker = withTheme(DurPicker);

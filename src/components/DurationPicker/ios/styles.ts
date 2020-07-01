@@ -1,31 +1,21 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, ViewStyle } from 'react-native';
+import { Colors } from 'react-native-paper';
 
 export const styles = StyleSheet.create({
-  header: {
-    height: 45,
-    borderBottomWidth: 1,
-    borderColor: '#ccc',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-  },
   buttonAction: {
-    height: '100%',
-    paddingHorizontal: 20,
     alignItems: 'center',
+    height: '100%',
     justifyContent: 'center',
+    paddingHorizontal: 20,
   },
   buttonText: {
-    fontSize: 20,
     color: '#006BFF',
+    fontSize: 20,
     fontWeight: '500',
   },
   buttonTextCancel: {
     color: '#666',
     fontWeight: '400',
-  },
-  body: {
-    flexDirection: 'row',
   },
   picker: {
     flex: 1,
@@ -35,3 +25,24 @@ export const styles = StyleSheet.create({
     fontSize: 16,
   },
 });
+
+type Style = {
+  body(theme: 'dark' | 'default'): ViewStyle;
+  header(theme: 'dark' | 'default'): ViewStyle;
+};
+
+export const dynamicStyles: Style = {
+  body: (theme) => ({
+    flexDirection: 'row',
+    backgroundColor: theme === 'dark' ? Colors.grey900 : 'white',
+  }),
+  header: (theme) => ({
+    alignItems: 'center',
+    borderBottomWidth: 1,
+    borderColor: theme === 'dark' ? Colors.grey600 : Colors.grey300,
+    flexDirection: 'row',
+    height: 45,
+    justifyContent: 'space-between',
+    backgroundColor: theme === 'dark' ? Colors.grey900 : 'white',
+  }),
+};

@@ -2,7 +2,7 @@ import React, { Component, ReactElement } from 'react';
 import { View, TouchableOpacity, Text } from 'react-native';
 import RBSheet from 'react-native-raw-bottom-sheet';
 import { Picker } from '@react-native-community/picker';
-import { styles } from './styles';
+import { styles, dynamicStyles } from './styles';
 import { IProps, IState } from './types.d';
 
 class TimePicker extends Component<IProps, IState> {
@@ -77,9 +77,9 @@ class TimePicker extends Component<IProps, IState> {
   };
 
   renderHeader = (): ReactElement => {
-    const { textCancel, textConfirm, itemStyle } = this.props;
+    const { textCancel, textConfirm, itemStyle, theme } = this.props;
     return (
-      <View style={styles.header}>
+      <View style={dynamicStyles.header(theme)}>
         <TouchableOpacity onPress={this.onCancel} style={styles.buttonAction}>
           <Text style={[styles.buttonText, styles.buttonTextCancel]}>{textCancel}</Text>
         </TouchableOpacity>
@@ -92,9 +92,9 @@ class TimePicker extends Component<IProps, IState> {
 
   renderBody = (): ReactElement => {
     const { selectedHour, selectedMinute } = this.state;
-    const { itemStyle } = this.props;
+    const { itemStyle, theme } = this.props;
     return (
-      <View style={styles.body}>
+      <View style={dynamicStyles.body(theme)}>
         <Picker
           selectedValue={selectedHour}
           style={styles.picker}

@@ -12,6 +12,7 @@ export interface IProps {
   textConfirm?: string;
   onCancel: () => void;
   onConfirm: (h: string, m: string) => void;
+  theme: 'dark' | 'default';
 }
 
 interface ItemStyle {

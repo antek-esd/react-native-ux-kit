@@ -14,7 +14,7 @@ function App() {
         setIsVisible={setIsVisible} 
         onConfirm={setDuration}
         selectedTime={duration}
-        color={'#1e1d6c'}
+        // darkTheme
       />
       <OfflineNotification position="bottom" disableScreen/>
       <TextInput onChangeText={setText} value={text} icon="pen" placeholder="placeholder" multiline/>

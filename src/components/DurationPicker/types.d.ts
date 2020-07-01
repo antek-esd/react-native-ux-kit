@@ -1,3 +1,5 @@
+import { Theme } from '../../types.d';
+
 export interface Time {
   hour: string;
   minute: string;
@@ -20,6 +22,7 @@ export interface IDurationPicker {
   // android
   title?: string;
   darkTheme?: boolean;
+  theme: Theme;
 }
 
 export interface IAndroidPickerResult {
