@@ -51,9 +51,8 @@ export interface ITextInput {
 export interface TextInputStyle {
   clearButtonStyle(showLabel: boolean, multiline: boolean | undefined): ViewStyle | TextStyle;
   helperText: ViewStyle;
-  inputStyle(showLabel: boolean): ViewStyle;
+  inputStyle(isFocused: boolean, showLabel: boolean, multiline: boolean): ViewStyle;
   leftIconContainerStyle: TextStyle;
   leftIconStyle(isFocused: boolean, showLabel: boolean, multiline: boolean | undefined): TextStyle;
-  multilineStyle: ViewStyle;
   textInputAndIconContainer: ViewStyle;
 }

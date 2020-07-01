@@ -1,6 +1,6 @@
 import React, { useState, useRef, FC, ReactElement } from 'react';
 import { View, Platform, ViewStyle, TextStyle, TextInput as RNTextInput } from 'react-native';
-import { HelperText, TextInput as PaperTextInput } from 'react-native-paper';
+import { HelperText, TextInput as PaperTextInput, Colors } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { ClearButton } from '.';
 import { ITextInput, TextInputStyle } from './types.d';
@@ -110,7 +110,7 @@ export const TextInput: FC<ITextInput> = ({
         <View style={{ flex: 1 }}>
           <PaperTextInput
             theme={{ colors: { primary: 'grey', text: 'grey' } }} // TODO: text color
-            dense={multiline && !label}
+            // dense={multiline && !label}
             caretHidden={caretHidden}
             editable={editable}
             error={showError}
@@ -129,7 +129,7 @@ export const TextInput: FC<ITextInput> = ({
             ref={myInput}
             render={render}
             secureTextEntry={secureTextEntry}
-            style={[multiline ? styles.multilineStyle : styles.inputStyle(!!label), propStyle]}
+            style={[styles.inputStyle(isFocused, !!label, multiline ?? false), propStyle]}
             textContentType={textContentType}
             underlineColor={underline ? 'grey' : 'transparent'}
             value={value}
@@ -177,7 +177,7 @@ TextInput.defaultProps = defaultProps;
 const styles: TextInputStyle = {
   clearButtonStyle: (showLabel, multiline): ViewStyle => {
     const getTop = () => {
-      if (multiline && !showLabel) return 5;
+      if (multiline && !showLabel) return 25;
       if (!showLabel) return 12;
       return 30;
     };
@@ -186,17 +186,30 @@ const styles: TextInputStyle = {
   helperText: {
     top: 0,
   },
-  inputStyle: (showLabel) => ({
-    backgroundColor: 'transparent',
-    height: showLabel ? 60 : 45,
-    textAlign: 'justify',
-  }),
+  inputStyle: (isFocused, showLabel, multiline) => {
+    const getHeight = () => {
+      if (multiline) return { height: undefined, minHeight: 45 };
+      if (showLabel) return { height: 60 };
+      return { height: 50 };
+    };
+    const borderWidth = isFocused ? 1 : 0;
+    return {
+      backgroundColor: isFocused ? Colors.grey100 : 'transparent',
+      textAlign: 'justify',
+      ...getHeight(),
+      borderTopWidth: borderWidth,
+      borderLeftWidth: borderWidth,
+      borderRightWidth: borderWidth,
+      borderColor: 'grey',
+      paddingRight: 5,
+    };
+  },
   leftIconContainerStyle: {
     marginLeft: ios ? 30 : 37,
   },
   leftIconStyle: (isFocused, showLabel, multiline) => {
     const getTop = () => {
-      if (multiline && !showLabel) return 5;
+      if (multiline && !showLabel) return 25;
       if (!showLabel) return 12;
       if (isFocused) return 30;
       return 25;
@@ -208,10 +221,6 @@ const styles: TextInputStyle = {
       top: getTop(),
       color: isFocused ? 'black' : 'gray', // TODO: color
     };
-  },
-  multilineStyle: {
-    backgroundColor: 'transparent',
-    minHeight: 45,
   },
   textInputAndIconContainer: {
     flexDirection: 'row',

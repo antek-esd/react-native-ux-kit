@@ -29,7 +29,7 @@ ClearButton.defaultProps = defaultProps;
 
 const styles = {
   button: (fullScreen: boolean) => ({
-    right: 2,
+    right: 5,
     width: fullScreen ? '100%' : '10%',
     position: 'absolute',
     top: 32,
