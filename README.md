@@ -4,9 +4,11 @@
 
 ## Components
 
-[Duration picker](./docs/duration-picker/duration-picker.md)
+* [Duration picker](./docs/duration-picker/duration-picker.md)
 
-[Offline notification](./docs/offline-notification/offline-notification.md)
+* [Offline notification](./docs/offline-notification/offline-notification.md)
+
+* [Text Input](./docs/text-input/text-input.md)
 
 ## Installation
 

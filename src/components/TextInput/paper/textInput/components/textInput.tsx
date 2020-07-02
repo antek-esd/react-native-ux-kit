@@ -1,13 +1,16 @@
 import React, { useState, useRef, FC, ReactElement } from 'react';
 import { View, Platform, ViewStyle, TextStyle, TextInput as RNTextInput } from 'react-native';
-import { HelperText, TextInput as PaperTextInput, Colors } from 'react-native-paper';
+import { HelperText, TextInput as PaperTextInput, ThemeProvider } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { ClearButton } from '.';
-import { ITextInput, TextInputStyle } from './types.d';
+import { ITextInput } from './types.d';
+import DefaultTheme from '../../../../../styles/DefaultTheme';
+import { withTheme } from '../../../../../core/theming';
+import { styles } from './styles';
 
 const ios = Platform.OS === 'ios';
 
-export const TextInput: FC<ITextInput> = ({
+const Input: FC<ITextInput> = ({
   caretHidden,
   clearButton,
   customLeftButton,
@@ -33,6 +36,7 @@ export const TextInput: FC<ITextInput> = ({
   showHint,
   style: propStyle,
   textContentType,
+  theme,
   underline,
   value,
 }): ReactElement => {
@@ -104,13 +108,13 @@ export const TextInput: FC<ITextInput> = ({
   };
 
   return (
-    <>
+    <ThemeProvider theme={DefaultTheme}>
       <View style={styles.textInputAndIconContainer}>
         {renderIcon()}
         <View style={{ flex: 1 }}>
           <PaperTextInput
-            theme={{ colors: { primary: 'grey', text: 'grey' } }} // TODO: text color
-            dense={multiline && !label}
+            // theme={{ colors: { primary: 'grey', text: 'grey' } }} // TODO: text color
+            dense={multiline && !label && !ios}
             caretHidden={caretHidden}
             editable={editable}
             error={showError}
@@ -129,7 +133,10 @@ export const TextInput: FC<ITextInput> = ({
             ref={myInput}
             render={render}
             secureTextEntry={secureTextEntry}
-            style={[styles.inputStyle(isFocused, !!label, multiline ?? false), propStyle]}
+            style={[
+              styles.inputStyle(isFocused, !!label, multiline ?? false, theme.colors.primary),
+              propStyle,
+            ]}
             textContentType={textContentType}
             underlineColor={underline ? 'grey' : 'transparent'}
             value={value}
@@ -138,7 +145,7 @@ export const TextInput: FC<ITextInput> = ({
         </View>
         {renderRightButton()}
       </View>
-    </>
+    </ThemeProvider>
   );
 };
 
@@ -170,60 +177,9 @@ const defaultProps: ITextInput = {
   textContentType: undefined,
   underline: true,
   value: undefined,
+  theme: DefaultTheme,
 };
 
-TextInput.defaultProps = defaultProps;
+Input.defaultProps = defaultProps;
 
-const styles: TextInputStyle = {
-  clearButtonStyle: (showLabel, multiline): ViewStyle => {
-    const getTop = () => {
-      if (multiline && !showLabel) return 25;
-      if (!showLabel) return 12;
-      return 30;
-    };
-    return { top: getTop() };
-  },
-  helperText: {
-    top: 0,
-  },
-  inputStyle: (isFocused, showLabel, multiline) => {
-    const getHeight = () => {
-      if (multiline) return { height: undefined, minHeight: 45 };
-      if (showLabel) return { height: 60 };
-      return { height: 50 };
-    };
-    const borderWidth = isFocused ? 1 : 0;
-    return {
-      backgroundColor: isFocused ? Colors.grey100 : 'transparent',
-      textAlign: 'justify',
-      ...getHeight(),
-      borderTopWidth: borderWidth,
-      borderLeftWidth: borderWidth,
-      borderRightWidth: borderWidth,
-      borderColor: 'grey',
-      paddingRight: 5,
-    };
-  },
-  leftIconContainerStyle: {
-    marginLeft: ios ? 30 : 37,
-  },
-  leftIconStyle: (isFocused, showLabel, multiline) => {
-    const getTop = () => {
-      if (multiline && !showLabel) return 25;
-      if (!showLabel) return 12;
-      if (isFocused) return 30;
-      return 25;
-    };
-    return {
-      fontSize: 18,
-      position: 'absolute',
-      right: 15,
-      top: getTop(),
-      color: isFocused ? 'black' : 'gray', // TODO: color
-    };
-  },
-  textInputAndIconContainer: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-  },
-};
+export const TextInput = withTheme(Input);

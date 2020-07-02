@@ -16,10 +16,10 @@
 | maxMinute(optional) | 59 | number | maximum allowed minute |
 | hourInterval(optional) | 1 | number | interval between hours |
 | minuteInterval(optional) | 1 | number | interval between minutes |
+| darkTheme(optional) | false | boolean | set dark theme manually |
 | hourUnit(ios only optional) | '' | string | hour unit example ' hours' |
 | minuteUnit(ios only optional) | '' | string | minute unit example ' minutes' |
 | title(android only optional) | 'Set time' | string | Picker header |
-| darkTheme(android only optional) | false | boolean | set dark theme manually |
 
 ## Usage
 

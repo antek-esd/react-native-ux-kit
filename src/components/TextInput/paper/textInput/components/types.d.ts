@@ -1,5 +1,6 @@
 import { ViewStyle, TextInput } from 'react-native';
 import { ReactElement } from 'react';
+import { Theme } from 'src/types';
 
 export interface IAutocompleteItem {
   isPicker: boolean;
@@ -46,12 +47,13 @@ export interface ITextInput {
     onPress(): void;
     icon?: string;
   };
+  theme: Theme;
 }
 
 export interface TextInputStyle {
   clearButtonStyle(showLabel: boolean, multiline: boolean | undefined): ViewStyle | TextStyle;
   helperText: ViewStyle;
-  inputStyle(isFocused: boolean, showLabel: boolean, multiline: boolean): ViewStyle;
+  inputStyle(isFocused: boolean, showLabel: boolean, multiline: boolean, color: string): ViewStyle;
   leftIconContainerStyle: TextStyle;
   leftIconStyle(isFocused: boolean, showLabel: boolean, multiline: boolean | undefined): TextStyle;
   textInputAndIconContainer: ViewStyle;

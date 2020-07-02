@@ -77,7 +77,6 @@ const DurPicker: FC<IDurationPicker> = (props): ReactElement => {
       if (TimePickerIOS?.current?.close) TimePickerIOS.current.close();
       setIsVisible(false);
     };
-    console.log(theme);
     return (
       <IOSTimePicker
         hourUnit={hourUnit}

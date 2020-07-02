@@ -16,7 +16,7 @@
 //   textInputProps,
 //   updateState,
 // }): ReactElement => {
-//   let autocomplete = useRef<Autocomplete<string | AutocompleteItemType> | null>(null);
+//   let autocomplete: Autocomplete<string | AutocompleteItemType> | null;
 //   const isPicker = mode === 'search picker' || mode === 'picker';
 //   const [text, setText] = useState(textInputProps.value);
 //   const [isShowResult, setIsShowResult] = useState(false);
@@ -53,6 +53,7 @@
 
 //   const onStartShouldSetResponderCapture = () => {
 //     if (updateState) updateState({ [isEnableScroll]: false });
+//     // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
 //     if (autocomplete?.resultList.props.scrollEventThrottle === 0 && !isEnableScroll) {
 //       if (updateState) updateState({ [isEnableScroll]: true });
 //     }
@@ -153,15 +154,33 @@
 //   inputContainerStyle: {
 //     borderColor: 'transparent',
 //   },
-//   listContainerStyle: (hasIcon) => ({
-//     margin: 8,
-//     marginLeft: hasIcon ? (ios ? 30 : 24) : ios ? 0 : -10,
-//     maxHeight: 125,
-//     position: ios ? 'absolute' : 'relative',
-//     marginTop: ios ? 58 : -27,
-//     width: hasIcon ? (ios ? '91%' : '96%') : ios ? '100%' : '112%',
-//     zIndex: 20,
-//   }),
+//   listContainerStyle: (hasIcon) => {
+//     const getMarginLeft = () => {
+//       if (ios) {
+//         if (hasIcon) return 30;
+//         return 0;
+//       }
+//       if (hasIcon) return 24;
+//       return -10;
+//     };
+//     const getWidth = () => {
+//       if (ios) {
+//         if (hasIcon) return '91%';
+//         return '100%';
+//       }
+//       if (hasIcon) return '96%';
+//       return '112%';
+//     };
+//     return {
+//       margin: 8,
+//       marginLeft: getMarginLeft(),
+//       maxHeight: 125,
+//       position: ios ? 'absolute' : 'relative',
+//       marginTop: ios ? 58 : -27,
+//       width: getWidth(),
+//       zIndex: 20,
+//     };
+//   },
 //   listStyle: {
 //     borderColor: Colors.grey300,
 //     maxHeight: 125,
