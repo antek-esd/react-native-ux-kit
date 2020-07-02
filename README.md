@@ -13,7 +13,10 @@
 ## Installation
 
 ```sh
-npm i react-native-common-ux-kit --save
+npm i react-native-common-ux-kit
+      @react-native-community/netinfo
+      @react-native-community/picker
+      react-native-vector-icons --save
 ```
 
 We are using [react-native-vector-icons](https://github.com/oblador/react-native-vector-icons), so you should add following lines in your project

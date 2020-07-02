@@ -11,7 +11,7 @@ Pod::Spec.new do |s|
   s.authors      = package["author"]
 
   s.platforms    = { :ios => "9.0" }
-  s.source       = { :git => "https://github.com/Guilhemehss/react-native-common-ux-kit.git", :tag => "#{s.version}" }
+  s.source       = { :git => "https://github.com/antek-esd/react-native-common-ux-kit.git", :tag => "#{s.version}" }
 
   
   s.source_files = "ios/**/*.{h,m,mm}"
