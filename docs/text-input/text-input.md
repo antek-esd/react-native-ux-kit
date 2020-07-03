@@ -1,4 +1,4 @@
-# Duration Picker
+# Text Input
 
 <img src="./screenshots/ios.png" height="350" ><img src="./screenshots/android.png" height="350" >
 

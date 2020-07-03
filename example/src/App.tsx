@@ -1,20 +1,22 @@
 import React, { useState } from 'react';
 import { StyleSheet, Button, View } from 'react-native';
-import  { DurationPicker, OfflineNotification, TextInput } from 'react-native-common-ux-kit';
+import  { DurationPicker, OfflineNotification, TextInput, SpinIcon } from 'react-native-common-ux-kit';
 
 function App() {
   const [isVisible, setIsVisible] = useState(false);
   const [text, setText] = useState('');
   const [duration, setDuration] = useState({ hour: '0', minute: '0'});
+  const [isSpin, setIsSpin] = useState(false);
   return (
     <View style={styles.container}>
+      <SpinIcon icon='car' isSpin={isSpin} onPress={() => setIsSpin(!isSpin)}/>
       <Button onPress={() => setIsVisible(!isVisible)} title={`${duration.hour}:${duration.minute}`} />
       <DurationPicker 
         isVisible={isVisible} 
         setIsVisible={setIsVisible} 
         onConfirm={setDuration}
         selectedTime={duration}
-        // darkTheme
+        darkTheme
       />
       <OfflineNotification position="bottom" disableScreen/>
       <TextInput onChangeText={setText} value={text} icon="pen" placeholder="placeholder" multiline/>

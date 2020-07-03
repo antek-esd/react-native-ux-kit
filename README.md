@@ -10,6 +10,8 @@
 
 * [Text Input](./docs/text-input/text-input.md)
 
+* [Spin Icon](./docs/spin-icon/spin-icon.md)
+
 ## Installation
 
 ```sh
