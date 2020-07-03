@@ -6,11 +6,13 @@
 
 * [Duration picker](./docs/duration-picker/duration-picker.md)
 
+* [Filter Bar](./docs/filter-bar/filter-bar.md)
+
 * [Offline bar](./docs/offline-bar/offline-bar.md)
 
-* [Text Input](./docs/text-input/text-input.md)
-
 * [Spin Icon](./docs/spin-icon/spin-icon.md)
+
+* [Text Input](./docs/text-input/text-input.md)
 
 ## Installation
 

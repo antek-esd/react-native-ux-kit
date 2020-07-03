@@ -33,7 +33,8 @@
   "keywords": [
     "react-native",
     "ios",
-    "android"
+    "android",
+    "duration picker"
   ],
   "repository": "https://github.com/antek-esd/react-native-common-ux-kit",
   "author": "Antek-ESD, Alexey Sergienko, Pavel Botezat <antek-esd@antek-aad.com> (https://github.com/antek-esd)",

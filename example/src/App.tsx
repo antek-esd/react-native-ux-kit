@@ -12,7 +12,7 @@ function App() {
     <SafeAreaView style={styles.container}>
       <FilterBar isVisible={isFilterBarVisible} text='Status' onCancelButtonPress={() => setIsFilterBarVisible(false)}/>
       <Button title='Filter by Status' onPress={() => setIsFilterBarVisible(true)} />
-      <SpinIcon icon='car' isSpin={isSpin} onPress={() => setIsSpin(!isSpin)}/>
+      <SpinIcon icon='sync' isSpin={isSpin} onPress={() => setIsSpin(!isSpin)}/>
       <OfflineBar position="bottom" disableScreen/>
       <Button onPress={() => setIsVisible(!isVisible)} title={`${duration.hour}:${duration.minute}`} />
       <DurationPicker 
@@ -22,10 +22,10 @@ function App() {
         selectedTime={duration}
         darkTheme
       />
-      {/* <TextInput onChangeText={setText} value={text} icon="pen" placeholder="placeholder" multiline/> */}
-      <TextInput label="input" onChangeText={setText} value={text} icon="book" placeholder="placeholder" underline={false}/>
-      {/* <TextInput label="input" placeholder="TextInput" onChangeText={setText} value={text} underline={false}/> */}
-      <TextInput label="input" placeholder="TextInput" onChangeText={setText} value={text} icon="google" multiline/>
+      <TextInput onChangeText={setText} value={text} icon="pen" placeholder="placeholder" multiline/>
+      {/* <TextInput label="input" onChangeText={setText} value={text} icon="book" placeholder="placeholder" underline={false}/> */}
+      <TextInput label="input" placeholder="TextInput" onChangeText={setText} value={text} underline={false}/>
+      {/* <TextInput label="input" placeholder="TextInput" onChangeText={setText} value={text} icon="google" multiline/> */}
     </SafeAreaView>
   );
 }
