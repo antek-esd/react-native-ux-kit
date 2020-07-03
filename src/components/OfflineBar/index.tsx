@@ -2,11 +2,11 @@ import React, { FC, ReactElement, useEffect, useState } from 'react';
 import { Dimensions, ViewStyle, TouchableOpacity } from 'react-native';
 import NetInfo from '@react-native-community/netinfo';
 import * as Animatable from 'react-native-animatable';
-import { IOfflineStatus } from './types.d';
+import { IOfflineBar } from './types.d';
 
 const { width, height } = Dimensions.get('window');
 
-const OfflineNotification: FC<IOfflineStatus> = (props): ReactElement | null => {
+const OfflineBar: FC<IOfflineBar> = (props): ReactElement | null => {
   const { position, text, disableScreen } = props;
   const [connectionStatus, setConnectionStatus] = useState(true);
   const [textAnimation, setTextAnimation] = useState<string | undefined>(undefined);
@@ -44,7 +44,7 @@ const OfflineNotification: FC<IOfflineStatus> = (props): ReactElement | null => 
   );
 };
 
-OfflineNotification.defaultProps = {
+OfflineBar.defaultProps = {
   position: 'bottom',
   text: 'No internet connection',
   disableScreen: false,
@@ -76,4 +76,4 @@ const styles = {
   },
 };
 
-export { OfflineNotification };
+export { OfflineBar };

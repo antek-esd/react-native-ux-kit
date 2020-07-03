@@ -1,6 +1,6 @@
-# Offline notification
+# Offline bar
 
-<img src="./offline-notification.gif" height="350" >
+<img src="./offline-bar.gif" height="350" >
 
 
 ## Props
@@ -16,12 +16,12 @@
 ```javascript
 import React, { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
-import { OfflineNotification } from 'react-native-common-ux-kit';
+import { OfflineBar } from 'react-native-common-ux-kit';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <OfflineNotification disableScreen/>
+      <OfflineBar disableScreen/>
     </View>
   );
 }

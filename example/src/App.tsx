@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { StyleSheet, Button } from 'react-native';
-import  { DurationPicker, OfflineNotification, TextInput, SpinIcon } from 'react-native-common-ux-kit';
+import  { DurationPicker, OfflineBar, TextInput, SpinIcon } from 'react-native-common-ux-kit';
 import { SafeAreaView } from 'react-native-safe-area-context';
 function App() {
   const [isVisible, setIsVisible] = useState(false);
@@ -10,7 +10,7 @@ function App() {
   return (
     <SafeAreaView style={styles.container}>
       <SpinIcon icon='car' isSpin={isSpin} onPress={() => setIsSpin(!isSpin)}/>
-      <OfflineNotification position="bottom" disableScreen/>
+      <OfflineBar position="bottom" disableScreen/>
       <Button onPress={() => setIsVisible(!isVisible)} title={`${duration.hour}:${duration.minute}`} />
       <DurationPicker 
         isVisible={isVisible} 

@@ -6,7 +6,7 @@
 
 * [Duration picker](./docs/duration-picker/duration-picker.md)
 
-* [Offline notification](./docs/offline-notification/offline-notification.md)
+* [Offline bar](./docs/offline-bar/offline-bar.md)
 
 * [Text Input](./docs/text-input/text-input.md)
 

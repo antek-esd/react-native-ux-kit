@@ -1,4 +1,4 @@
-# Offline notification
+# Spin Icon
 
 <img src="./spin-icon.gif" height="350" />
 
