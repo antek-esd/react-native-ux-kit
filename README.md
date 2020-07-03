@@ -6,6 +6,8 @@
 
 * [Duration picker](./docs/duration-picker/duration-picker.md)
 
+* [Empty List View](./docs/empty-list/empty-list.md)
+
 * [Filter Bar](./docs/filter-bar/filter-bar.md)
 
 * [Offline bar](./docs/offline-bar/offline-bar.md)
