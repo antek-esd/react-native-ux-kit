@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { StyleSheet, Button } from 'react-native';
 import  { DurationPicker, OfflineBar, TextInput, SpinIcon, FilterBar } from 'react-native-common-ux-kit';
 import { SafeAreaView } from 'react-native-safe-area-context';
+
 function App() {
   const [isVisible, setIsVisible] = useState(false);
   const [text, setText] = useState('');
@@ -9,6 +10,7 @@ function App() {
   const [isSpin, setIsSpin] = useState(false);
   const [isFilterBarVisible, setIsFilterBarVisible] = useState(false);
   return (
+    // <EmptyListView />
     <SafeAreaView style={styles.container}>
       <FilterBar isVisible={isFilterBarVisible} text='Status' onCancelButtonPress={() => setIsFilterBarVisible(false)}/>
       <Button title='Filter by Status' onPress={() => setIsFilterBarVisible(true)} />

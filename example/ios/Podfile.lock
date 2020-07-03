@@ -233,7 +233,7 @@ PODS:
     - React-cxxreact (= 0.62.0)
     - React-jsi (= 0.62.0)
   - React-jsinspector (0.62.0)
-  - react-native-common-ux-kit (0.5.1):
+  - react-native-common-ux-kit (0.6.0):
     - React
   - react-native-netinfo (5.9.4):
     - React
@@ -449,7 +449,7 @@ SPEC CHECKSUMS:
   React-jsi: bc8166d6833cdcb0848c80710b26ce63fad2c099
   React-jsiexecutor: 8bf0b2707f05865113415088c398a7f98c0cf546
   React-jsinspector: 8e5913c4c6c54f0d3f9c9fc630c465a89cded65d
-  react-native-common-ux-kit: 7dda6c3b4bda6994e505aecf4b502417035c5047
+  react-native-common-ux-kit: d69f9e84d3ea08a08659c7948f7a3a833cefcb4f
   react-native-netinfo: cd479ab1b67cdd1cb1403a99ecdb24190a6dd7ef
   react-native-safe-area-context: ef6f16c66b0797ecae1bf86c103dfb3dc16fc33d
   React-RCTActionSheet: 674afbc8b9c76e0a83520e0a51da29a70802c03f
