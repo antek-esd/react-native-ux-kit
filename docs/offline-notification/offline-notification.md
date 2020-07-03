@@ -1,6 +1,7 @@
 # Offline notification
 
-<img src="./screenshot.png" height="350" >
+<img src="./offline-notification.gif" height="350" >
+
 
 ## Props
 

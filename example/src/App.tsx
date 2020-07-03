@@ -10,6 +10,7 @@ function App() {
   return (
     <SafeAreaView style={styles.container}>
       <SpinIcon icon='car' isSpin={isSpin} onPress={() => setIsSpin(!isSpin)}/>
+      <OfflineNotification position="bottom" disableScreen/>
       <Button onPress={() => setIsVisible(!isVisible)} title={`${duration.hour}:${duration.minute}`} />
       <DurationPicker 
         isVisible={isVisible} 
@@ -18,7 +19,6 @@ function App() {
         selectedTime={duration}
         darkTheme
       />
-      <OfflineNotification position="bottom" disableScreen/>
       <TextInput onChangeText={setText} value={text} icon="pen" placeholder="placeholder" multiline/>
       <TextInput label="input" onChangeText={setText} value={text} icon="book" placeholder="placeholder" underline={false}/>
       <TextInput label="input" placeholder="TextInput" onChangeText={setText} value={text} underline={false}/>

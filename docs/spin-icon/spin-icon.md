@@ -1,5 +1,7 @@
 # Offline notification
 
+<img src="./spin-icon.gif" height="350" />
+
 ## Props
 
 | Prop                        | Default | type     | Desc                                                                                                               |
