@@ -7,6 +7,7 @@ import DefaultTheme from '../../styles/DefaultTheme';
 import { ISpinIcon } from './types.d';
 
 const AnimIcon = Animatable.createAnimatableComponent(
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   Icon as ComponentClass<{ style?: any; name?: string; size?: number; color?: string }, any>
 );
 

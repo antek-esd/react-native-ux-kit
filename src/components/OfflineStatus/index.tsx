@@ -1,5 +1,5 @@
 import React, { FC, ReactElement, useEffect, useState } from 'react';
-import { Text, Dimensions, ViewStyle, View } from 'react-native';
+import { Dimensions, ViewStyle, TouchableOpacity } from 'react-native';
 import NetInfo from '@react-native-community/netinfo';
 import * as Animatable from 'react-native-animatable';
 import { IOfflineStatus } from './types.d';
@@ -9,6 +9,7 @@ const { width, height } = Dimensions.get('window');
 const OfflineNotification: FC<IOfflineStatus> = (props): ReactElement | null => {
   const { position, text, disableScreen } = props;
   const [connectionStatus, setConnectionStatus] = useState(true);
+  const [textAnimation, setTextAnimation] = useState<string | undefined>(undefined);
 
   useEffect(() => {
     const unsubscribe = NetInfo.addEventListener((state) => {
@@ -18,25 +19,29 @@ const OfflineNotification: FC<IOfflineStatus> = (props): ReactElement | null => 
     return unsubscribe;
   }, []);
 
-  const MiniOfflineSign = () => {
-    const animation = position === 'top' ? 'slideInDown' : 'slideInUp';
-    return (
-      <>
-        {disableScreen ? <View style={styles.disableScreenView as ViewStyle} /> : null}
-        <Animatable.View
-          animation={animation}
-          duration={2000}
-          style={styles.offlineContainer(position ?? 'bottom')}
-          useNativeDriver
-        >
-          <Text style={styles.offlineText}>{text}</Text>
-        </Animatable.View>
-      </>
-    );
-  };
-
   if (connectionStatus) return null;
-  return <MiniOfflineSign />;
+  const animation = position === 'top' ? 'slideInDown' : 'slideInUp';
+  return (
+    <>
+      {disableScreen ? (
+        <TouchableOpacity
+          onPress={() => setTextAnimation(textAnimation ? undefined : 'bounceIn')}
+          activeOpacity={0.3}
+          style={styles.disableScreenView as ViewStyle}
+        />
+      ) : null}
+      <Animatable.View
+        animation={animation}
+        duration={2000}
+        style={styles.offlineContainer(position ?? 'bottom')}
+        useNativeDriver
+      >
+        <Animatable.Text animation={textAnimation} style={styles.offlineText}>
+          {text}
+        </Animatable.Text>
+      </Animatable.View>
+    </>
+  );
 };
 
 OfflineNotification.defaultProps = {
@@ -52,6 +57,7 @@ const styles = {
     width,
     position: 'absolute',
     height,
+    zIndex: 20,
   },
   offlineContainer: (position: string): ViewStyle => ({
     alignItems: 'center',
@@ -63,6 +69,7 @@ const styles = {
     justifyContent: 'center',
     position: 'absolute',
     width,
+    zIndex: 30,
   }),
   offlineText: {
     color: '#fff',
